@@ -55,6 +55,8 @@ function game () {
     for (let i = 0; i < 5; i++) {
         getComputerChoice()
         playGame(playerSelection, computerSelection);
+        // initialize a counter for player, if player wins ++
+        // initialize a counter for computer, if computer wins ++
         console.log(playerSelection, computerSelection);
         console.log(playGame(playerSelection, computerSelection));
     }

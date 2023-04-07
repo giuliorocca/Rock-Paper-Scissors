@@ -1,12 +1,10 @@
-let playerChoice = prompt ('To play, type: rock, paper, or scissors');
-let playerSelection = playerChoice.toLowerCase();
-
+// Make computer randomly choose strategy: rock, paper, or scissors
 function getComputerChoice() {
     let choiceArray = ['rock', 'paper', 'scissors']
     // Generate a random number 0>x<1 with Math.random()
     // Multiply by the array length with choiceArray.length
     // Round down to nearest integer with Math.floor()
-    // Outcome: random integers [0, 1, 2], which matches index values of array  
+    // Return random integers [0, 1, 2], which match index values of array  
     let randomChoice = Math.floor((Math.random()*choiceArray.length));
     //console.log(randomChoice);
     if (randomChoice === 0) {
@@ -19,46 +17,58 @@ function getComputerChoice() {
     return computerSelection;
 }
 
+// Determine win or loss based on outcomes table
 function playGame (player, computer) {
     switch (true) {
         case player === 'rock' && computer === 'scissors':
+            playerWins = true;
             return ('You win. Rock beats scissors.');
-            break;
         case player === 'rock' && computer === 'rock':
             return ('Tie. Rock ties with rock.');
-            break;
         case player === 'rock' && computer === 'paper':
-            return ('You lose. Paper beats rock.');  
-            break;  
+            computerWins = true;
+            return ('You lose. Paper beats rock.');
         case player === 'paper' && computer === 'scissors':
+            computerWins = true;
             return ('You lose. Scissors beats paper.');
-            break;
         case player === 'paper' && computer === 'rock':
+            playerWins = true;
             return ('You win. Paper beats rock.');
-            break;
         case player === 'paper' && computer === 'paper':
             return ('Tie. Paper ties with paper.');  
-            break;  
         case player === 'scissors' && computer === 'scissors':
             return ('Tie. Scissors ties with scissors.');
-            break;
         case player === 'scissors' && computer === 'rock':
+            computerWins = true;
             return ('You lose. Rock beats scissors.');
-            break;
         case player === 'scissors' && computer === 'paper':
+            playerWins = true;
             return ('You win. Scissors beats paper.');
-            break;
     }
 }
 
+// Play the game 5 times and track score
 function game () {
     for (let i = 0; i < 5; i++) {
+        
         getComputerChoice()
+        let playerChoice = prompt ('To play, type: rock, paper, or scissors');
+        let playerSelection = playerChoice.toLowerCase();
+        let playerScore = 0;
+        let computerScore = 0;
+        
         playGame(playerSelection, computerSelection);
-        // initialize a counter for player, if player wins ++
-        // initialize a counter for computer, if computer wins ++
+        
+        if (playerWins = true) {
+            playerScore++;
+        }
+        if (computerScore = true) {
+            computerScore++;
+        }
+        
         console.log(playerSelection, computerSelection);
         console.log(playGame(playerSelection, computerSelection));
+        console.log(playerScore, computerScore);
     }
 }
 

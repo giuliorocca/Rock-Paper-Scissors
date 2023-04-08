@@ -1,5 +1,9 @@
-let computerWins = null;
+// Initialize player and computer "win state" to null
+// This will be updated to true/false when the game is played
 let playerWins = null;
+let computerWins = null;
+
+// Initialize player and computer scores to 0
 let playerScore = 0;
 let computerScore = 0;
 
@@ -11,7 +15,6 @@ function getComputerChoice() {
     // Round down to nearest integer with Math.floor()
     // Return random integers [0, 1, 2], which match index values of array  
     let randomChoice = Math.floor((Math.random()*choiceArray.length));
-    //console.log(randomChoice);
     if (randomChoice === 0) {
         computerSelection = choiceArray[0]; 
     } else if (randomChoice === 1) {
@@ -31,22 +34,22 @@ function playGame (player, computer) {
             computerWins = false;
             return ('You win. Rock beats scissors.');
         
-            case player === 'rock' && computer === 'rock':
+        case player === 'rock' && computer === 'rock':
             playerWins = false;
             computerWins = false;
             return ('Tie. Rock ties with rock.');
         
-            case player === 'rock' && computer === 'paper':
+        case player === 'rock' && computer === 'paper':
             playerWins = false;
             computerWins = true;
             return ('You lose. Paper beats rock.');
         
-            case player === 'paper' && computer === 'scissors':
+        case player === 'paper' && computer === 'scissors':
             playerWins = false;
             computerWins = true;
             return ('You lose. Scissors beats paper.');
         
-            case player === 'paper' && computer === 'rock':
+        case player === 'paper' && computer === 'rock':
             playerWins = true;
             computerWins = false;
             return ('You win. Paper beats rock.');

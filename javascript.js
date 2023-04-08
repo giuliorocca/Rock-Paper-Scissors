@@ -19,6 +19,8 @@ function getComputerChoice() {
 
 // Determine win or loss based on outcomes table
 function playGame (player, computer) {
+    let computerWins = null;
+    let playerWins = null;
     switch (true) {
         case player === 'rock' && computer === 'scissors':
             playerWins = true;
@@ -52,17 +54,19 @@ function game () {
     for (let i = 0; i < 5; i++) {
         
         getComputerChoice()
+
         let playerChoice = prompt ('To play, type: rock, paper, or scissors');
         let playerSelection = playerChoice.toLowerCase();
+        
         let playerScore = 0;
         let computerScore = 0;
         
         playGame(playerSelection, computerSelection);
         
-        if (playerWins = true) {
+        if (playerWins === true) {
             playerScore++;
         }
-        if (computerScore = true) {
+        if (computerWins === true) {
             computerScore++;
         }
         

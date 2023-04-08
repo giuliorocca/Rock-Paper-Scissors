@@ -1,3 +1,8 @@
+let computerWins = null;
+let playerWins = null;
+let playerScore = 0;
+let computerScore = 0;
+
 // Make computer randomly choose strategy: rock, paper, or scissors
 function getComputerChoice() {
     let choiceArray = ['rock', 'paper', 'scissors']
@@ -19,37 +24,56 @@ function getComputerChoice() {
 
 // Determine win or loss based on outcomes table
 function playGame (player, computer) {
-    let computerWins = null;
-    let playerWins = null;
     switch (true) {
+        
         case player === 'rock' && computer === 'scissors':
             playerWins = true;
+            computerWins = false;
             return ('You win. Rock beats scissors.');
-        case player === 'rock' && computer === 'rock':
+        
+            case player === 'rock' && computer === 'rock':
+            playerWins = false;
+            computerWins = false;
             return ('Tie. Rock ties with rock.');
-        case player === 'rock' && computer === 'paper':
+        
+            case player === 'rock' && computer === 'paper':
+            playerWins = false;
             computerWins = true;
             return ('You lose. Paper beats rock.');
-        case player === 'paper' && computer === 'scissors':
+        
+            case player === 'paper' && computer === 'scissors':
+            playerWins = false;
             computerWins = true;
             return ('You lose. Scissors beats paper.');
-        case player === 'paper' && computer === 'rock':
+        
+            case player === 'paper' && computer === 'rock':
             playerWins = true;
+            computerWins = false;
             return ('You win. Paper beats rock.');
+        
         case player === 'paper' && computer === 'paper':
+            playerWins = false;
+            computerWins = false;
             return ('Tie. Paper ties with paper.');  
+        
         case player === 'scissors' && computer === 'scissors':
+            playerWins = false;
+            computerWins = false;
             return ('Tie. Scissors ties with scissors.');
+        
         case player === 'scissors' && computer === 'rock':
+            playerWins = false;
             computerWins = true;
             return ('You lose. Rock beats scissors.');
+        
         case player === 'scissors' && computer === 'paper':
             playerWins = true;
+            computerWins = false;
             return ('You win. Scissors beats paper.');
     }
 }
 
-// Play the game 5 times and track score
+// Play the game 5 times and keep score
 function game () {
     for (let i = 0; i < 5; i++) {
         
@@ -57,9 +81,6 @@ function game () {
 
         let playerChoice = prompt ('To play, type: rock, paper, or scissors');
         let playerSelection = playerChoice.toLowerCase();
-        
-        let playerScore = 0;
-        let computerScore = 0;
         
         playGame(playerSelection, computerSelection);
         

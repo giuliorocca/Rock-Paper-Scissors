@@ -12,7 +12,7 @@ function getComputerChoice() {
     // Generate a random number 0 > x < 1 with Math.random()
     // Multiply by the array length using the .length method on the array
     // Round down to nearest integer with Math.floor()
-    // Return random integer from [0, 1, 2], which corresponds to the index values of the array  
+    // Return random integer from [0, 1, 2], which corresponds to the index value of the array  
     let computerChoice = Math.floor((Math.random()*choiceArray.length));
     if (computerChoice === 0) {
         computerChoice = choiceArray[0]; 
@@ -121,4 +121,4 @@ function playGame () {
     }
 }
 
-playGame()
+playGame();

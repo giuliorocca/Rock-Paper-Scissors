@@ -25,11 +25,11 @@ function getComputerChoice() {
 }
 
 // Make player choose: rock, paper, or scissors
-function getPlayerChoice() {
-    let playerChoice = prompt ('To play, type: rock, paper, or scissors');
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
-}
+//function getPlayerChoice() {
+//    let playerChoice = prompt ('To play, type: rock, paper, or scissors');
+//    playerChoice = playerChoice.toLowerCase();
+//    return playerChoice;
+//}
 
 // Determine win or loss each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
@@ -99,12 +99,10 @@ function playRound (playerChoice, computerChoice) {
     }
 }
     
-// Play 5 rounds of the game and keep score
-function playGame () {
-    for (let i = 0; i < 5; i++) {
+// Play one round of the game and keep score
+function playGame (playerSelection, computerSelection) {
         
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
+        //let computerSelection = getComputerChoice();
 
         playRound(playerSelection, computerSelection);
         
@@ -119,6 +117,28 @@ function playGame () {
         console.log(playRound(playerSelection, computerSelection));
         console.log(playerScore, computerScore);
     }
+
+// Functions passed to button EventListeners that correspond to player choices
+function playerRock () {
+    playGame('rock', getComputerChoice());
 }
 
-playGame();
+function playerPaper () {
+    playGame('paper', getComputerChoice());
+}
+
+function playerScissors () {
+    playGame('scissors', getComputerChoice());
+}
+
+//Player presses 'rock' button
+const rockButton = document.getElementById('rockButton');
+rockButton.addEventListener('click', playerRock);
+
+//Player presses 'paper' button
+const paperButton = document.getElementById('paperButton');
+paperButton.addEventListener('click', playerPaper);
+
+//Player presses 'scissors' button
+const scissorsButton = document.getElementById('scissorsButton');
+scissorsButton.addEventListener('click', playerScissors);

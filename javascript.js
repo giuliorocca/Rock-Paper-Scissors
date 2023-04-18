@@ -101,14 +101,12 @@ function playRound (playerChoice, computerChoice) {
     
 // Play one round of the game and keep score
 function playGame (playerSelection, computerSelection) {
-        
-        //let computerSelection = getComputerChoice();
 
         playRound(playerSelection, computerSelection);
         
         if (playerWins === true) {
             playerScore++;
-        }
+        } 
         if (computerWins === true) {
             computerScore++;
         }
@@ -118,7 +116,7 @@ function playGame (playerSelection, computerSelection) {
         console.log(playerScore, computerScore);
     }
 
-// Functions passed to button EventListeners that correspond to player choices
+// Functions passed in button EventListeners that correspond to player choices
 function playerRock () {
     playGame('rock', getComputerChoice());
 }

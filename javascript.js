@@ -90,7 +90,7 @@ function playRound (playerChoice, computerChoice) {
     }
 }
   
-// Initialize new paragraph element that will show the player/computer
+// Initialize new paragraph element that will show the player/computer choice
 const choicesdiv = document.getElementById('choicesdiv');
 const choicesdivcontent = document.createElement('p');
 
@@ -134,22 +134,22 @@ function playGame (playerSelection, computerSelection) {
     if (computerWins === true) {
         computerScore++;
     }
-    if (playerScore || computerScore === 5 && playerScore > computerScore) {
+    if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
             alert('You win')
     }
-    if (playerScore || computerScore === 5 && playerScore < computerScore) {
+    if (playerScore === 5 || computerScore === 5 && playerScore < computerScore) {
             alert('You lose')
     }    
-}
 
-// Add text showing the player/computer choices in the newly created paragraph element
-choicesdivcontent.textContent = `You played ${playerSelection} and computer played ${computerSelection}`;
-choicesdiv.appendChild(choicesdivcontent);
+    // Add text showing the player/computer choices in the newly created paragraph element
+    choicesdivcontent.textContent = `You played ${playerSelection} and computer played ${computerSelection}`;
+    choicesdiv.appendChild(choicesdivcontent);
 
-// Add text showing the round outcome in the newly created paragraph element
-outcomedivcontent.textContent = playRound(playerSelection, computerSelection);
-outcomediv.appendChild(outcomedivcontent);
+    // Add text showing the round outcome in the newly created paragraph element
+    outcomedivcontent.textContent = playRound(playerSelection, computerSelection);
+    outcomediv.appendChild(outcomedivcontent);
         
-// Add text showing score in newly created paragraph element
-scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
-scorediv.appendChild(scoredivcontent);
+    // Add text showing score in newly created paragraph element
+    scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
+    scorediv.appendChild(scoredivcontent);
+}

@@ -91,8 +91,8 @@ function playRound (playerChoice, computerChoice) {
 }
   
 // Initialize new paragraph element that will show the player/computer choice
-const choicesdiv = document.getElementById('choicesdiv');
-const choicesdivcontent = document.createElement('p');
+const summarydiv = document.getElementById('summarydiv');
+const summarydivcontent = document.createElement('p');
 
 // Initialize new paragraph element that will show the round outcome
 const outcomediv = document.getElementById('outcomediv');
@@ -114,16 +114,16 @@ function playerScissors () {
 }
 
 //Player clicks 'rock' button
-const rockButton = document.getElementById('rockButton');
-rockButton.addEventListener('click', playerRock);
+const rockImage = document.getElementById('rockImage');
+rockImage.addEventListener('click', playerRock);
 
 //Player clicks 'paper' button
-const paperButton = document.getElementById('paperButton');
-paperButton.addEventListener('click', playerPaper);
+const paperImage = document.getElementById('paperImage');
+paperImage.addEventListener('click', playerPaper);
 
 //Player clicks'scissors' button
-const scissorsButton = document.getElementById('scissorsButton');
-scissorsButton.addEventListener('click', playerScissors);
+const scissorsImage = document.getElementById('scissorsImage');
+scissorsImage.addEventListener('click', playerScissors);
 
 // Play one round of the game and keep score
 function playGame (playerSelection, computerSelection) {
@@ -142,8 +142,8 @@ function playGame (playerSelection, computerSelection) {
     }    
 
     // Add text showing the player/computer choices in the newly created paragraph element
-    choicesdivcontent.textContent = `You played ${playerSelection} and computer played ${computerSelection}`;
-    choicesdiv.appendChild(choicesdivcontent);
+    summarydivcontent.textContent = `You played ${playerSelection} and computer played ${computerSelection}`;
+    summarydiv.appendChild(summarydivcontent);
 
     // Add text showing the round outcome in the newly created paragraph element
     outcomedivcontent.textContent = playRound(playerSelection, computerSelection);

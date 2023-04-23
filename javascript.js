@@ -6,6 +6,9 @@ let computerWins = null;
 let playerScore = 0;
 let computerScore = 0;
 
+let audioWin = new Audio('win.mp3');
+let audioLose = new Audio('lose.mp3');
+
 // Make computer randomly choose from: rock, paper, scissors
 function getComputerChoice() {
     let choiceArray = ['rock', 'paper', 'scissors']
@@ -130,9 +133,11 @@ function playGame (playerSelection, computerSelection) {
         
     if (playerWins === true) {
         playerScore++;
+        audioWin.play();
     } 
     if (computerWins === true) {
         computerScore++;
+        audioLose.play();
     }
     if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
             alert('You win')

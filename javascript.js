@@ -64,12 +64,24 @@ scissorsImage.addEventListener('click', playerScissors);
 function playRound (playerChoice, computerChoice) {
     
     // End game if player or computer reaches 5 points
-    if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
-        return;
+    if (playerScore === 5 || computerScore === 5) {
+        
+        // Hide the prior game's info in the created divs
+        const div1 = document.getElementById("summarydiv");
+        div1.style.display === "none";
+
+        const div2 = document.getElementById("outcomediv");
+        div2.style.display === "none";
+
+        const div3 = document.getElementById("scorediv");
+        div3.style.display === "none";
+
+        // Reset scores and win states
+        playerScore = 0;
+        computerScore = 0;
+        playerWins = null;
+        computerWins = null;
     }
-    if (playerScore === 5 || computerScore === 5 && playerScore < computerScore) {
-        return;
-    } 
 
     audio.play();
     
@@ -140,7 +152,7 @@ function playRound (playerChoice, computerChoice) {
                 outcome = 'You win. Scissors beats paper.';
             }           
     }
-    // Create text in new div showing player/computer choices
+     // Create text in new div showing player/computer choices
     summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
     summarydiv.appendChild(summarydivcontent);
         

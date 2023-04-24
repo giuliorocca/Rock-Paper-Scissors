@@ -60,16 +60,32 @@ paperImage.addEventListener('click', playerPaper);
 const scissorsImage = document.getElementById('scissorsImage');
 scissorsImage.addEventListener('click', playerScissors);
 
+function createRoundInfo {
+    // Create text showing player/computer choices
+    summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
+    summarydiv.appendChild(summarydivcontent);
+    
+    // Create text showing round outcome
+    outcomedivcontent.textContent = playRound(playerChoice, computerChoice);
+    outcomediv.appendChild(outcomedivcontent);
+                    
+    // Create text showing score
+    scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
+    scorediv.appendChild(scoredivcontent);       
+}
+
 // Determine winner each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
-
+    
+    audio.play();
+    
     // End game if player or AI reaches 5 points
     if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
         alert('You win')
     }
     if (playerScore === 5 || computerScore === 5 && playerScore < computerScore) {
         alert('You lose')
-    }         
+    } 
     
     switch(playerChoice) {
         // Determine who wins when player picks rock
@@ -78,14 +94,12 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = true;
                 computerWins = false;
                 playerScore++;
-                audio.play();
                 return ('You win. Rock beats scissors.');
             }
 
             if (computerChoice === 'rock') {
                 playerWins = false;
                 computerWins = false;
-                audio.play();
                 return ('Tie. Rock ties with rock.');
             } 
             
@@ -93,7 +107,6 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = false;
                 computerWins = true;
                 computerScore++;
-                audio.play();
                 return ('You lose. Paper beats rock.');
             }
 
@@ -103,7 +116,6 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = false;
                 computerWins = true;
                 computerScore++;
-                audio.play();
                 return ('You lose. Scissors beats paper.');
             }
 
@@ -111,14 +123,12 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = true;
                 computerWins = false;
                 playerScore++;
-                audio.play();
                 return ('You win. Paper beats rock.');
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = false;
                 computerWins = false;
-                audio.play();
                 return ('Tie. Paper ties paper.');
             }    
 
@@ -127,7 +137,6 @@ function playRound (playerChoice, computerChoice) {
             if (computerChoice === 'scissors') {
                 playerWins = false;
                 computerWins = false;
-                audio.play();
                 return ('Tie. Scissors ties scissors.');
             }
 
@@ -135,7 +144,6 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = false;
                 computerWins = true;
                 computerScore++;
-                audio.play();
                 return ('You lose. Rock beats scissors.');
             } 
             
@@ -143,20 +151,8 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = true;
                 computerWins = false;
                 playerScore++;
-                audio.play();
                 return ('You win. Scissors beats paper.');
-            }
+            }           
     }
-
-    // Create text showing player/computer choices
-    summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
-    summarydiv.appendChild(summarydivcontent);
-        
-    // Create text showing round outcome
-    outcomedivcontent.textContent = playRound(playerChoice, computerChoice);
-    outcomediv.appendChild(outcomedivcontent);
-                
-    // Create text showing score
-    scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
-    scorediv.appendChild(scoredivcontent);          
+createRoundInfo ();                
 }

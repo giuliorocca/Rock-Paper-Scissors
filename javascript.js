@@ -60,20 +60,6 @@ paperImage.addEventListener('click', playerPaper);
 const scissorsImage = document.getElementById('scissorsImage');
 scissorsImage.addEventListener('click', playerScissors);
 
-function createRoundInfo {
-    // Create text showing player/computer choices
-    summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
-    summarydiv.appendChild(summarydivcontent);
-    
-    // Create text showing round outcome
-    outcomedivcontent.textContent = playRound(playerChoice, computerChoice);
-    outcomediv.appendChild(outcomedivcontent);
-                    
-    // Create text showing score
-    scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
-    scorediv.appendChild(scoredivcontent);       
-}
-
 // Determine winner each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
     
@@ -82,9 +68,11 @@ function playRound (playerChoice, computerChoice) {
     // End game if player or AI reaches 5 points
     if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
         alert('You win')
+        return;
     }
     if (playerScore === 5 || computerScore === 5 && playerScore < computerScore) {
         alert('You lose')
+        return;
     } 
     
     switch(playerChoice) {
@@ -94,20 +82,20 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = true;
                 computerWins = false;
                 playerScore++;
-                return ('You win. Rock beats scissors.');
+                outcome = 'You win. Rock beats scissors.';
             }
 
             if (computerChoice === 'rock') {
                 playerWins = false;
                 computerWins = false;
-                return ('Tie. Rock ties with rock.');
+                outcome = 'Tie. Rock ties with rock.';
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = false;
                 computerWins = true;
                 computerScore++;
-                return ('You lose. Paper beats rock.');
+                outcome = 'You lose. Paper beats rock.';
             }
 
         // Determine who wins when player picks paper
@@ -116,20 +104,20 @@ function playRound (playerChoice, computerChoice) {
                 playerWins = false;
                 computerWins = true;
                 computerScore++;
-                return ('You lose. Scissors beats paper.');
+                outcome = 'You lose. Scissors beats paper.';
             }
 
             if (computerChoice === 'rock') {
                 playerWins = true;
                 computerWins = false;
                 playerScore++;
-                return ('You win. Paper beats rock.');
+                outcome = 'You win. Paper beats rock.';
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = false;
                 computerWins = false;
-                return ('Tie. Paper ties paper.');
+                outcome = 'Tie. Paper ties paper.';
             }    
 
         // Determine who wins when player picks scissors
@@ -137,22 +125,32 @@ function playRound (playerChoice, computerChoice) {
             if (computerChoice === 'scissors') {
                 playerWins = false;
                 computerWins = false;
-                return ('Tie. Scissors ties scissors.');
+                outcome = 'Tie. Scissors ties scissors.';
             }
 
             if (computerChoice === 'rock') {
                 playerWins = false;
                 computerWins = true;
                 computerScore++;
-                return ('You lose. Rock beats scissors.');
+                outcome = 'You lose. Rock beats scissors.';
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = true;
                 computerWins = false;
                 playerScore++;
-                return ('You win. Scissors beats paper.');
+                outcome = 'You win. Scissors beats paper.';
             }           
     }
-createRoundInfo ();                
+// Create text showing player/computer choices
+summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
+summarydiv.appendChild(summarydivcontent);
+    
+// Create text showing round outcome
+outcomedivcontent.textContent = outcome;
+outcomediv.appendChild(outcomedivcontent);
+                    
+// Create text showing score
+scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
+scorediv.appendChild(scoredivcontent);                
 }

@@ -9,35 +9,29 @@ let computerScore = 0;
 // Initialize audio file, which will play each round
 let audio = new Audio('audio.mp3');
 
+// Initialize blank html element that will show player/computer choice
+const summarydiv = document.getElementById('summarydiv');
+const summarydivcontent = document.createElement('p');
+
+// Initialize blank html element that will show round outcome
+const outcomediv = document.getElementById('outcomediv');
+const outcomedivcontent = document.createElement('p');
+
+// Initialize blank html element that will show score
+const scorediv = document.getElementById('scorediv');
+const scoredivcontent = document.createElement('p');
+
 // Make computer randomly choose from: rock, paper, scissors
 function getComputerChoice() {
-    let choiceArray = ['rock', 'paper', 'scissors']
+    const choiceArray = ['rock', 'paper', 'scissors']
     // Generate a random number 0 > x < 1 with Math.random()
     // Multiply by the array length using the .length method on the array
     // Round down to nearest integer with Math.floor()
     // Return random integer from [0, 1, 2], which corresponds to the index value of the array  
-    let computerChoice = Math.floor((Math.random()*choiceArray.length));
-    if (computerChoice === 0) {
-        computerChoice = choiceArray[0]; 
-    } else if (computerChoice === 1) {
-        computerChoice = choiceArray[1];
-    } else if (computerChoice === 2) {
-        computerChoice = choiceArray[2];
-    }   
+    const randomArrayIndexValue = Math.floor((Math.random()*choiceArray.length));
+    const computerChoice = choiceArray[randomArrayIndexValue];
     return computerChoice;
 }
-
-// Initialize new html element that describes player/computer choice
-const summarydiv = document.getElementById('summarydiv');
-const summarydivcontent = document.createElement('p');
-
-// Initialize new html element that describes round outcome
-const outcomediv = document.getElementById('outcomediv');
-const outcomedivcontent = document.createElement('p');
-
-// Initialize new html element that describes score
-const scorediv = document.getElementById('scorediv');
-const scoredivcontent = document.createElement('p');
 
 // Create functions that are passed into click EventListeners on images
 function playerRock () {
@@ -63,7 +57,7 @@ scissorsImage.addEventListener('click', playerScissors);
 // Determine winner of each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
     
-    // End game if player or computer reaches 5 points
+    // Reset game if player or computer reaches 5 points
     if (playerScore === 5 || computerScore === 5) {
         
         // Hide the prior game's info in the created divs
@@ -161,7 +155,7 @@ function playRound (playerChoice, computerChoice) {
     outcomediv.appendChild(outcomedivcontent);
                         
     // Create text in new div showing score
-    scoredivcontent.textContent = `Player Score: ${playerScore} \n Computer Score: ${computerScore}`;
+    scoredivcontent.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`;
     scorediv.appendChild(scoredivcontent);
 
     // Alert player if s/he has won or lost

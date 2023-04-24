@@ -6,9 +6,8 @@ let computerWins = null;
 let playerScore = 0;
 let computerScore = 0;
 
-// Initialize audio files, which will be played each round
-let audioWin = new Audio('win.mp3');
-let audioLose = new Audio('lose.mp3');
+// Initialize audio file, which will play each round
+let audio = new Audio('audio.mp3');
 
 // Make computer randomly choose from: rock, paper, scissors
 function getComputerChoice() {
@@ -16,7 +15,7 @@ function getComputerChoice() {
     // Generate a random number 0 > x < 1 with Math.random()
     // Multiply by the array length using the .length method on the array
     // Round down to nearest integer with Math.floor()
-    // Returns random integer from [0, 1, 2], which corresponds to the index value of the array  
+    // Return random integer from [0, 1, 2], which corresponds to the index value of the array  
     let computerChoice = Math.floor((Math.random()*choiceArray.length));
     if (computerChoice === 0) {
         computerChoice = choiceArray[0]; 
@@ -28,27 +27,73 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+// Initialize new html element that describes player/computer choice
+const summarydiv = document.getElementById('summarydiv');
+const summarydivcontent = document.createElement('p');
+
+// Initialize new html element that describes round outcome
+const outcomediv = document.getElementById('outcomediv');
+const outcomedivcontent = document.createElement('p');
+
+// Initialize new html element that describes score
+const scorediv = document.getElementById('scorediv');
+const scoredivcontent = document.createElement('p');
+
+// Create functions that are passed into click EventListeners for the images
+function playerRock () {
+    playRound('rock', getComputerChoice());
+}
+function playerPaper () {
+    playRound('paper', getComputerChoice());
+}
+function playerScissors () {
+    playRound('scissors', getComputerChoice());
+}
+
+// Invoke functions with appropriate argument for playRound() using EventListeners on images
+const rockImage = document.getElementById('rockImage');
+rockImage.addEventListener('click', playerRock);
+
+const paperImage = document.getElementById('paperImage');
+paperImage.addEventListener('click', playerPaper);
+
+const scissorsImage = document.getElementById('scissorsImage');
+scissorsImage.addEventListener('click', playerScissors);
+
 // Determine winner each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
 
+    // End game if player or AI reaches 5 points
+    if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
+        alert('You win')
+    }
+    if (playerScore === 5 || computerScore === 5 && playerScore < computerScore) {
+        alert('You lose')
+    }         
+    
     switch(playerChoice) {
         // Determine who wins when player picks rock
         case 'rock':
             if (computerChoice === 'scissors') {
                 playerWins = true;
                 computerWins = false;
+                playerScore++;
+                audio.play();
                 return ('You win. Rock beats scissors.');
             }
 
             if (computerChoice === 'rock') {
                 playerWins = false;
                 computerWins = false;
+                audio.play();
                 return ('Tie. Rock ties with rock.');
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = false;
                 computerWins = true;
+                computerScore++;
+                audio.play();
                 return ('You lose. Paper beats rock.');
             }
 
@@ -57,18 +102,23 @@ function playRound (playerChoice, computerChoice) {
             if (computerChoice === 'scissors') {
                 playerWins = false;
                 computerWins = true;
+                computerScore++;
+                audio.play();
                 return ('You lose. Scissors beats paper.');
             }
 
             if (computerChoice === 'rock') {
                 playerWins = true;
                 computerWins = false;
+                playerScore++;
+                audio.play();
                 return ('You win. Paper beats rock.');
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = false;
                 computerWins = false;
+                audio.play();
                 return ('Tie. Paper ties paper.');
             }    
 
@@ -77,85 +127,36 @@ function playRound (playerChoice, computerChoice) {
             if (computerChoice === 'scissors') {
                 playerWins = false;
                 computerWins = false;
+                audio.play();
                 return ('Tie. Scissors ties scissors.');
             }
 
             if (computerChoice === 'rock') {
                 playerWins = false;
                 computerWins = true;
+                computerScore++;
+                audio.play();
                 return ('You lose. Rock beats scissors.');
             } 
             
             if (computerChoice === 'paper') {
                 playerWins = true;
                 computerWins = false;
+                playerScore++;
+                audio.play();
                 return ('You win. Scissors beats paper.');
             }
     }
-}
-  
-// Initialize new paragraph element that will show the player/computer choice
-const summarydiv = document.getElementById('summarydiv');
-const summarydivcontent = document.createElement('p');
 
-// Initialize new paragraph element that will show the round outcome
-const outcomediv = document.getElementById('outcomediv');
-const outcomedivcontent = document.createElement('p');
-
-// Initialize new paragraph element that will show the score
-const scorediv = document.getElementById('scorediv');
-const scoredivcontent = document.createElement('p');
-
-// Create functions that are passed into EventListeners for the images
-function playerRock () {
-    playGame('rock', getComputerChoice());
-}
-function playerPaper () {
-    playGame('paper', getComputerChoice());
-}
-function playerScissors () {
-    playGame('scissors', getComputerChoice());
-}
-
-// Invoke function with rock as argument when player clicks rock image
-const rockImage = document.getElementById('rockImage');
-rockImage.addEventListener('click', playerRock);
-
-// Invoke function with paper as argument when player clicks paper image
-const paperImage = document.getElementById('paperImage');
-paperImage.addEventListener('click', playerPaper);
-
-// Invoke function with scissors as argument when player clicks scissors image
-const scissorsImage = document.getElementById('scissorsImage');
-scissorsImage.addEventListener('click', playerScissors);
-
-// Play one round of the game and keep score
-function playGame (playerSelection, computerSelection) {
-        
-    if (playerWins === true) {
-        playerScore++;
-        audioWin.play();
-    } 
-    if (computerWins === true) {
-        computerScore++;
-        audioLose.play();
-    }
-    if (playerScore === 5 || computerScore === 5 && playerScore > computerScore) {
-            alert('You win')
-    }
-    if (playerScore === 5 || computerScore === 5 && playerScore < computerScore) {
-            alert('You lose')
-    }    
-
-    // Add text showing the player/computer choices in the newly created paragraph element
-    summarydivcontent.textContent = `You played ${playerSelection} and computer played ${computerSelection}`;
+    // Create text showing player/computer choices
+    summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
     summarydiv.appendChild(summarydivcontent);
-
-    // Add text showing the round outcome in the newly created paragraph element
-    outcomedivcontent.textContent = playRound(playerSelection, computerSelection);
-    outcomediv.appendChild(outcomedivcontent);
         
-    // Add text showing score in newly created paragraph element
+    // Create text showing round outcome
+    outcomedivcontent.textContent = playRound(playerChoice, computerChoice);
+    outcomediv.appendChild(outcomedivcontent);
+                
+    // Create text showing score
     scoredivcontent.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
-    scorediv.appendChild(scoredivcontent);
+    scorediv.appendChild(scoredivcontent);          
 }

@@ -1,19 +1,39 @@
 #container {
-    background: rgb(255, 255, 255);
     display: flex;
-    flex-direction:column;
     justify-content: center;
+    align-items: center;
+    min-height: 100%;
 }
 
-#body {
+#game {
+    background: rgb(240, 240, 240);
+    padding: 30px;
+    border-radius: 25px;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
 
-#h1 {
+h1 {
     font-size: 32px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
 }
 
-#choices:hover { 
-    transform: scale(1.5); 
+#instructions {
+    text-align: center;
 }
+
+#choices {
+    text-align: center;
+}
+
+image:hover { 
+    transform: scale(1.1); 
+}
+
+p {
+    padding: 0px;

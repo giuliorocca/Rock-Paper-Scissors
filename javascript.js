@@ -6,6 +6,7 @@ let computerWins = null;
 let playerScore = 0;
 let computerScore = 0;
 
+// Initialize audio files, which will be played each round
 let audioWin = new Audio('win.mp3');
 let audioLose = new Audio('lose.mp3');
 
@@ -105,7 +106,7 @@ const outcomedivcontent = document.createElement('p');
 const scorediv = document.getElementById('scorediv');
 const scoredivcontent = document.createElement('p');
 
-// Create functions that are passed into EventListeners of buttons
+// Create functions that are passed into EventListeners for the images
 function playerRock () {
     playGame('rock', getComputerChoice());
 }
@@ -116,15 +117,15 @@ function playerScissors () {
     playGame('scissors', getComputerChoice());
 }
 
-//Player clicks 'rock' button
+// Invoke function with rock as argument when player clicks rock image
 const rockImage = document.getElementById('rockImage');
 rockImage.addEventListener('click', playerRock);
 
-//Player clicks 'paper' button
+// Invoke function with paper as argument when player clicks paper image
 const paperImage = document.getElementById('paperImage');
 paperImage.addEventListener('click', playerPaper);
 
-//Player clicks'scissors' button
+// Invoke function with scissors as argument when player clicks scissors image
 const scissorsImage = document.getElementById('scissorsImage');
 scissorsImage.addEventListener('click', playerScissors);
 

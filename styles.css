@@ -1,19 +1,37 @@
 #container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100%;
+    flex-wrap: 1;
 }
 
 #game {
     background: rgb(240, 240, 240);
-    padding: 30px;
+    padding: 40px 30px 20px 30px;
     border-radius: 25px;
+    margin-top: 50px;
+    width: 700px;
+}
+
+#toptext {
+    text-align: center;
+}
+
+#rules {
+    padding: 10px 30px 20px 30px;
+    border-radius: 25px;
+    width: 700px;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+}
+
+p {
+    margin: 20px;
+    padding: 0px;
 }
 
 h1 {
@@ -31,9 +49,10 @@ h1 {
     text-align: center;
 }
 
+#scorediv, #summarydiv, #outcomediv {
+    color:rgb(146, 0, 0)
+}
+
 image:hover { 
     transform: scale(1.1); 
 }
-
-p {
-    padding: 0px;

@@ -88,7 +88,12 @@ function playRound (playerChoice, computerChoice) {
     
     // Reset game if player or computer reaches 5 points
     if (playerScore === 5 || computerScore === 5) {
-
+        
+        // Remove EventListeners on images to prevent player from playing further
+        rockImage.removeEventListener();
+        paperImage.removeEventListener();
+        scissorsImage.removeEventListener();
+        
         // Create a replay button that will call the reset function (resets game)
         const button = document.createElement('button');
         button.textContent = "Play again";
@@ -98,7 +103,12 @@ function playRound (playerChoice, computerChoice) {
             button.style.display = "none";
         }
     }
-
+    
+    // Restore EventListeners on images to enable player to play again
+    rockImage.addEventListener('click', playerRock);
+    paperImage.addEventListener('click', playerPaper);
+    scissorsImage.addEventListener('click', playerScissors);
+    
     audio.play();
     
     switch(playerChoice) {

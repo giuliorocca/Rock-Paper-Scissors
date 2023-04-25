@@ -21,6 +21,10 @@ const outcomedivcontent = document.createElement('p');
 const scorediv = document.getElementById('scorediv');
 const scoredivcontent = document.createElement('p');
 
+// Initialize blank html element that will show end result
+const enddiv = document.getElementById('enddiv');
+const enddivcontent = document.createElement('p');
+
 // Make computer randomly choose from: rock, paper, scissors
 function getComputerChoice() {
     const choiceArray = ['rock', 'paper', 'scissors']
@@ -69,6 +73,9 @@ function playRound (playerChoice, computerChoice) {
 
         const div3 = document.getElementById("scorediv");
         div3.style.display === "none";
+
+        const div4 = document.getElementById("enddiv");
+        div4.style.display === "none";
 
         // Reset scores and win states
         playerScore = 0;
@@ -158,11 +165,13 @@ function playRound (playerChoice, computerChoice) {
     scoredivcontent.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`;
     scorediv.appendChild(scoredivcontent);
 
-    // Alert player if s/he has won or lost
+    // Create text in new div showing end result
     if (playerScore === 5) {
-        alert('You win');
+        enddivcontent.textContent = 'Amazing, you won!';
+        enddiv.appendChild(enddivcontent);
     }
     if (computerScore === 5) {
-        alert('You win');
+        enddivcontent.textContent = 'Shucks, you lost!';
+        enddiv.appendChild(enddivcontent);
     }
 }

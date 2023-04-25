@@ -48,9 +48,13 @@ h1 {
     text-align: center;
 }
 
-#scorediv, #summarydiv, #outcomediv {
+#scorediv, #summarydiv, #outcomediv, #enddiv {
     color:rgb(146, 0, 0);
     text-align: center;
+}
+
+#enddiv {
+    font-weight: 700;
 }
 
 image:hover { 

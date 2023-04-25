@@ -25,6 +25,9 @@ const scoredivcontent = document.createElement('p');
 const enddiv = document.getElementById('enddiv');
 const enddivcontent = document.createElement('p');
 
+// Initialize variable for HTML div that will have replay button appended later
+const gamediv = document.getElementById('game');
+
 // Make computer randomly choose from: rock, paper, scissors
 function getComputerChoice() {
     const choiceArray = ['rock', 'paper', 'scissors']
@@ -58,30 +61,42 @@ paperImage.addEventListener('click', playerPaper);
 const scissorsImage = document.getElementById('scissorsImage');
 scissorsImage.addEventListener('click', playerScissors);
 
+function reset () {
+
+    // Hide the prior game's info in the created divs
+    const div1 = document.getElementById("summarydiv");
+    div1.style.display = "none";
+
+    const div2 = document.getElementById("outcomediv");
+    div2.style.display = "none";
+
+    const div3 = document.getElementById("scorediv");
+    div3.style.display = "none";
+
+    const div4 = document.getElementById("enddiv");
+    div4.style.display = "none";
+
+    // Reset scores and win states
+    playerScore = 0;
+    computerScore = 0;
+    playerWins = null;
+    computerWins = null;
+}
+
 // Determine winner of each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
     
     // Reset game if player or computer reaches 5 points
     if (playerScore === 5 || computerScore === 5) {
-        
-        // Hide the prior game's info in the created divs
-        const div1 = document.getElementById("summarydiv");
-        div1.style.display = "none";
 
-        const div2 = document.getElementById("outcomediv");
-        div2.style.display = "none";
-
-        const div3 = document.getElementById("scorediv");
-        div3.style.display = "none";
-
-        const div4 = document.getElementById("enddiv");
-        div4.style.display = "none";
-
-        // Reset scores and win states
-        playerScore = 0;
-        computerScore = 0;
-        playerWins = null;
-        computerWins = null;
+        // Create a replay button that will call the reset function (resets game)
+        const button = document.createElement('button');
+        button.textContent = "Play again";
+        gamediv.appendChild(button);
+        button.onclick = function () {
+            reset();
+            button.style.display = "none";
+        }
     }
 
     audio.play();

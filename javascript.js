@@ -99,15 +99,20 @@ function playRound (playerChoice, computerChoice) {
         button.textContent = "Play again";
         gamediv.appendChild(button);
         button.onclick = function () {
+            
+            // Call reset function, which resets scores and hides game info
             reset();
+            
+            // Hide button
             button.style.display = "none";
+            
+            // Restore EventListeners on images to enable player to play again
+            rockImage.addEventListener('click', playerRock);
+            paperImage.addEventListener('click', playerPaper);
+            scissorsImage.addEventListener('click', playerScissors);
         }
     }
-    
-    // Restore EventListeners on images to enable player to play again
-    rockImage.addEventListener('click', playerRock);
-    paperImage.addEventListener('click', playerPaper);
-    scissorsImage.addEventListener('click', playerScissors);
+
     
     audio.play();
     

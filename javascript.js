@@ -96,11 +96,16 @@ function playRound (playerChoice, computerChoice) {
         
         // Create a replay button that will call the reset function (resets game)
         const button = document.createElement('button');
+        
+        // Center new button
+        button.style.position = "absolute";
+        button.style.left = "50%";
+        button.style.transform = "translateX(-50%)";
         button.textContent = "Play again";
+
+        // Append button to div and give it an onclick function
         gamediv.appendChild(button);
         button.onclick = function () {
-            
-            // Call reset function, which resets scores and hides game info
             reset();
             
             // Hide button

@@ -174,7 +174,7 @@ function playRound (playerChoice, computerChoice) {
     scoredivcontent.textContent = `Player Score: ${playerScore} ` + `Computer Score: ${computerScore}`;
     scorediv.appendChild(scoredivcontent);
 
-    // Create text in new div showing end result
+    // Create text in new div showing the end result
     if (playerScore === 5) {
         enddivcontent.textContent = 'Amazing, you won!';
         enddiv.appendChild(enddivcontent);

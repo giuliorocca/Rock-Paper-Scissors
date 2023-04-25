@@ -90,9 +90,9 @@ function playRound (playerChoice, computerChoice) {
     if (playerScore === 5 || computerScore === 5) {
         
         // Remove EventListeners on images to prevent player from playing further
-        rockImage.removeEventListener();
-        paperImage.removeEventListener();
-        scissorsImage.removeEventListener();
+        rockImage.removeEventListener('click', playerRock);
+        paperImage.removeEventListener('click', playerPaper);
+        scissorsImage.removeEventListener('click', playerScissors);
         
         // Create a replay button that will call the reset function (resets game)
         const button = document.createElement('button');

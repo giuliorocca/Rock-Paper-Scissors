@@ -59,8 +59,10 @@ button {
 #footer {
     margin-top: auto;
     padding: 12px;
-    background:rgb(240, 240, 240);
+    background:rgb(43, 43, 43);
+    color: white;
     display: flex;
     justify-content: center;
     align-self: stretch;
+    font-size: 18px;
 }

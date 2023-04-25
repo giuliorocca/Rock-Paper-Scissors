@@ -178,16 +178,19 @@ function playRound (playerChoice, computerChoice) {
     if (playerScore === 5) {
         enddivcontent.textContent = 'Amazing, you won!';
         enddiv.appendChild(enddivcontent);
+
         const div4 = document.getElementById("enddiv");
         div4.style.display = "initial";
+
     }
     if (computerScore === 5) {
         enddivcontent.textContent = 'Shucks, you lost!';
         enddiv.appendChild(enddivcontent);
+        
         const div4 = document.getElementById("enddiv");
         div4.style.display = "initial";
     }
-    
+
     // Reveal the game info divs if they were previously hidden
     const div1 = document.getElementById("summarydiv");
     div1.style.display = "initial";

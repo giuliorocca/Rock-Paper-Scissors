@@ -9,23 +9,23 @@ let computerScore = 0;
 // Initialize audio file, which will play each round
 let audio = new Audio('audio.mp3');
 
-// Initialize blank html element that will show player/computer choice
+// Initialize html element that will show player/computer choices
 const summarydiv = document.getElementById('summarydiv');
 const summarydivcontent = document.createElement('p');
 
-// Initialize blank html element that will show round outcome
+// Initialize html element that will show round outcome
 const outcomediv = document.getElementById('outcomediv');
 const outcomedivcontent = document.createElement('p');
 
-// Initialize blank html element that will show score
+// Initialize html element that will show scores
 const scorediv = document.getElementById('scorediv');
 const scoredivcontent = document.createElement('p');
 
-// Initialize blank html element that will show end result
+// Initialize html element that will show end result
 const enddiv = document.getElementById('enddiv');
 const enddivcontent = document.createElement('p');
 
-// Initialize variable for HTML div that will have replay button appended later
+// Initialize constant for HTML div that will contain the 'play again' button
 const gamediv = document.getElementById('game');
 
 // Make computer randomly choose from: rock, paper, scissors
@@ -88,7 +88,7 @@ function createReplayButton () {
     const button = document.createElement('button');
         
     // Center replay button
-    button.style.position = "absolute";
+    button.style.position = "relative";
     button.style.left = "50%";
     button.style.transform = "translateX(-50%)";
     button.textContent = "Play again";
@@ -211,7 +211,7 @@ function playRound (playerChoice, computerChoice) {
         outcomedivcontent.textContent = outcome;
         outcomediv.appendChild(outcomedivcontent);
                             
-        // Create text in new div showing score
+        // Create text in new div showing scores
         scoredivcontent.textContent = `Player Score: ${playerScore} ` + `Computer Score: ${computerScore}`;
         scorediv.appendChild(scoredivcontent);
 

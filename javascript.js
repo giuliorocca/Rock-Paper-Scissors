@@ -231,19 +231,19 @@ function playRound (playerChoice, computerChoice) {
             enddiv.appendChild(enddivcontent);
             
             const div4 = document.getElementById("enddiv");
-            div4.style.display = "initial";
+            div4.style.display = "block";
 
             createReplayButton();
         }
 
         // Reveal the game info divs if they were previously hidden
         const div1 = document.getElementById("summarydiv");
-        div1.style.display = "initial";
+        div1.style.display = "block";
         
         const div2 = document.getElementById("outcomediv");
-        div2.style.display = "initial";
+        div2.style.display = "block";
         
         const div3 = document.getElementById("scorediv");
-        div3.style.display = "initial";
+        div3.style.display = "block";
     }
 }

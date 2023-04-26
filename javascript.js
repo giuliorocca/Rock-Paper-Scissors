@@ -221,7 +221,7 @@ function playRound (playerChoice, computerChoice) {
             enddiv.appendChild(enddivcontent);
 
             const div4 = document.getElementById("enddiv");
-            div4.style.display = "initial";
+            div4.style.display = "block";
 
             createReplayButton();
 

@@ -10,7 +10,7 @@ body {
 }
 
 p {
-    margin: 20px;
+    margin: 0px;
     padding: 0px;
 }
 
@@ -27,28 +27,35 @@ button {
     margin-bottom: 15px;
     background-color: rgb(146, 0, 0);
     color:rgb(240, 240, 240);
-    padding: 6px;
+    padding: 7px;
+    margin-top: 15px;
 }
 
 #game {
     background: rgb(240, 240, 240);
     padding: 30px 30px 30px 30px;
     border-radius: 25px;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 700px;
 }
 
 #rules {
     padding: 15px 15px 15px 60px;
     width: 700px;
+    margin-top: 14px;
 }
 
-#toptext, #instructions, #choices, #footer {
-    text-align: center;
+#title, #toptext, #choices {
+    margin: 14px;
 }
 
 #scorediv, #summarydiv, #outcomediv, #enddiv {
+    margin: 6px;
     color:rgb(146, 0, 0);
+    text-align: center;
+}
+
+#toptext, #instructions, #choices, #footer {
     text-align: center;
 }
 
@@ -58,11 +65,19 @@ button {
 
 #footer {
     margin-top: auto;
-    padding: 12px;
-    background:rgb(43, 43, 43);
-    color: white;
+    padding: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-self: stretch;
     font-size: 18px;
+}
+
+#author {
+    margin-bottom: 5px;
+}
+
+#github {
+    height: 30px; 
+    width: 30px;
 }

@@ -45,8 +45,19 @@ button {
     margin-top: 14px;
 }
 
+#rockImage:hover, #paperImage:hover, #scissorsImage:hover {
+    opacity: 0.6;
+}
+
 #title, #toptext, #choices {
     margin: 14px;
+}
+
+#choices {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 #scorediv, #summarydiv, #outcomediv, #enddiv {

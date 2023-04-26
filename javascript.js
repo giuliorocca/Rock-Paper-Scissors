@@ -94,21 +94,21 @@ function playRound (playerChoice, computerChoice) {
         paperImage.removeEventListener('click', playerPaper);
         scissorsImage.removeEventListener('click', playerScissors);
         
-        // Create a replay button that will call the reset function (resets game)
+        // Create replay button that will call the reset function (resets game)
         const button = document.createElement('button');
         
-        // Center new button
+        // Center replay button
         button.style.position = "absolute";
         button.style.left = "50%";
         button.style.transform = "translateX(-50%)";
         button.textContent = "Play again";
 
-        // Append button to div and give it an onclick function
+        // Append replay button to div and give it an onclick function
         gamediv.appendChild(button);
         button.onclick = function () {
             reset();
             
-            // Hide button
+            // Hide replay button
             button.style.display = "none";
             
             // Restore EventListeners on images to enable player to play again
@@ -118,121 +118,123 @@ function playRound (playerChoice, computerChoice) {
         }
     }
 
-    
-    audio.play();
-    
-    switch(playerChoice) {
-        // Determine who wins when player picks rock
-        case 'rock':
-            if (computerChoice === 'scissors') {
-                playerWins = true;
-                computerWins = false;
-                playerScore++;
-                outcome = 'You win. Rock beats scissors.';
-                break;
-            }
-
-            if (computerChoice === 'rock') {
-                playerWins = false;
-                computerWins = false;
-                outcome = 'Tie. Rock ties with rock.';
-                break;
-            } 
-            
-            if (computerChoice === 'paper') {
-                playerWins = false;
-                computerWins = true;
-                computerScore++;
-                outcome = 'You lose. Paper beats rock.';
-                break;
-            }
-
-        // Determine who wins when player picks paper
-        case 'paper':
-            if (computerChoice === 'scissors') {
-                playerWins = false;
-                computerWins = true;
-                computerScore++;
-                outcome = 'You lose. Scissors beats paper.';
-                break;
-            }
-
-            if (computerChoice === 'rock') {
-                playerWins = true;
-                computerWins = false;
-                playerScore++;
-                outcome = 'You win. Paper beats rock.';
-                break;
-            } 
-            
-            if (computerChoice === 'paper') {
-                playerWins = false;
-                computerWins = false;
-                outcome = 'Tie. Paper ties paper.';
-                break;
-            }    
-
-        // Determine who wins when player picks scissors
-        case 'scissors':
-            if (computerChoice === 'scissors') {
-                playerWins = false;
-                computerWins = false;
-                outcome = 'Tie. Scissors ties scissors.';
-                break;
-            }
-
-            if (computerChoice === 'rock') {
-                playerWins = false;
-                computerWins = true;
-                computerScore++;
-                outcome = 'You lose. Rock beats scissors.';
-                break;
-            } 
-            
-            if (computerChoice === 'paper') {
-                playerWins = true;
-                computerWins = false;
-                playerScore++;
-                outcome = 'You win. Scissors beats paper.';
-                break;
-            }           
-    }
-     // Create text in new div showing player/computer choices
-    summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
-    summarydiv.appendChild(summarydivcontent);
+    else if (playerScore != 5 || computerScore != 5) {
         
-    // Create text in new div showing round outcome
-    outcomedivcontent.textContent = outcome;
-    outcomediv.appendChild(outcomedivcontent);
-                        
-    // Create text in new div showing score
-    scoredivcontent.textContent = `Player Score: ${playerScore} ` + `Computer Score: ${computerScore}`;
-    scorediv.appendChild(scoredivcontent);
-
-    // Create text in new div showing the end result
-    if (playerScore === 5) {
-        enddivcontent.textContent = 'Amazing, you won!';
-        enddiv.appendChild(enddivcontent);
-
-        const div4 = document.getElementById("enddiv");
-        div4.style.display = "initial";
-
-    }
-    if (computerScore === 5) {
-        enddivcontent.textContent = 'Shucks, you lost!';
-        enddiv.appendChild(enddivcontent);
+        audio.play();
         
-        const div4 = document.getElementById("enddiv");
-        div4.style.display = "initial";
-    }
+        switch(playerChoice) {
+            // Determine who wins when player picks rock
+            case 'rock':
+                if (computerChoice === 'scissors') {
+                    playerWins = true;
+                    computerWins = false;
+                    playerScore++;
+                    outcome = 'You win. Rock beats scissors.';
+                    break;
+                }
 
-    // Reveal the game info divs if they were previously hidden
-    const div1 = document.getElementById("summarydiv");
-    div1.style.display = "initial";
-    
-    const div2 = document.getElementById("outcomediv");
-    div2.style.display = "initial";
-    
-    const div3 = document.getElementById("scorediv");
-    div3.style.display = "initial";
+                if (computerChoice === 'rock') {
+                    playerWins = false;
+                    computerWins = false;
+                    outcome = 'Tie. Rock ties with rock.';
+                    break;
+                } 
+                
+                if (computerChoice === 'paper') {
+                    playerWins = false;
+                    computerWins = true;
+                    computerScore++;
+                    outcome = 'You lose. Paper beats rock.';
+                    break;
+                }
+
+            // Determine who wins when player picks paper
+            case 'paper':
+                if (computerChoice === 'scissors') {
+                    playerWins = false;
+                    computerWins = true;
+                    computerScore++;
+                    outcome = 'You lose. Scissors beats paper.';
+                    break;
+                }
+
+                if (computerChoice === 'rock') {
+                    playerWins = true;
+                    computerWins = false;
+                    playerScore++;
+                    outcome = 'You win. Paper beats rock.';
+                    break;
+                } 
+                
+                if (computerChoice === 'paper') {
+                    playerWins = false;
+                    computerWins = false;
+                    outcome = 'Tie. Paper ties paper.';
+                    break;
+                }    
+
+            // Determine who wins when player picks scissors
+            case 'scissors':
+                if (computerChoice === 'scissors') {
+                    playerWins = false;
+                    computerWins = false;
+                    outcome = 'Tie. Scissors ties scissors.';
+                    break;
+                }
+
+                if (computerChoice === 'rock') {
+                    playerWins = false;
+                    computerWins = true;
+                    computerScore++;
+                    outcome = 'You lose. Rock beats scissors.';
+                    break;
+                } 
+                
+                if (computerChoice === 'paper') {
+                    playerWins = true;
+                    computerWins = false;
+                    playerScore++;
+                    outcome = 'You win. Scissors beats paper.';
+                    break;
+                }           
+        }
+        // Create text in new div showing player/computer choices
+        summarydivcontent.textContent = `You played ${playerChoice} and computer played ${computerChoice}`;
+        summarydiv.appendChild(summarydivcontent);
+            
+        // Create text in new div showing round outcome
+        outcomedivcontent.textContent = outcome;
+        outcomediv.appendChild(outcomedivcontent);
+                            
+        // Create text in new div showing score
+        scoredivcontent.textContent = `Player Score: ${playerScore} ` + `Computer Score: ${computerScore}`;
+        scorediv.appendChild(scoredivcontent);
+
+        // Create text in new div showing the end result
+        if (playerScore === 5) {
+            enddivcontent.textContent = 'Amazing, you won!';
+            enddiv.appendChild(enddivcontent);
+
+            const div4 = document.getElementById("enddiv");
+            div4.style.display = "initial";
+
+        }
+        if (computerScore === 5) {
+            enddivcontent.textContent = 'Shucks, you lost!';
+            enddiv.appendChild(enddivcontent);
+            
+            const div4 = document.getElementById("enddiv");
+            div4.style.display = "initial";
+        }
+
+        // Reveal the game info divs if they were previously hidden
+        const div1 = document.getElementById("summarydiv");
+        div1.style.display = "initial";
+        
+        const div2 = document.getElementById("outcomediv");
+        div2.style.display = "initial";
+        
+        const div3 = document.getElementById("scorediv");
+        div3.style.display = "initial";
+    }
 }

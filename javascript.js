@@ -63,7 +63,7 @@ scissorsImage.addEventListener('click', playerScissors);
 
 function reset () {
 
-    // Hide the prior game's info in the created divs
+    // Hide the prior game info in the created divs
     const div1 = document.getElementById("summarydiv");
     div1.style.display = "none";
 
@@ -83,6 +83,31 @@ function reset () {
     computerWins = null;
 }
 
+function createReplayButton () {
+    
+    const button = document.createElement('button');
+        
+    // Center replay button
+    button.style.position = "absolute";
+    button.style.left = "50%";
+    button.style.transform = "translateX(-50%)";
+    button.textContent = "Play again";
+
+    // Append replay button to div and give it an onclick function
+    gamediv.appendChild(button);
+    button.onclick = function () {
+        reset();
+        
+        // Hide replay button
+        button.style.display = "none";
+        
+        // Restore EventListeners on images to enable player to play again
+        rockImage.addEventListener('click', playerRock);
+        paperImage.addEventListener('click', playerPaper);
+        scissorsImage.addEventListener('click', playerScissors);
+    }
+}
+
 // Determine winner of each round based on outcomes table
 function playRound (playerChoice, computerChoice) {
     
@@ -94,35 +119,15 @@ function playRound (playerChoice, computerChoice) {
         paperImage.removeEventListener('click', playerPaper);
         scissorsImage.removeEventListener('click', playerScissors);
         
-        // Create replay button that will call the reset function (resets game)
-        const button = document.createElement('button');
-        
-        // Center replay button
-        button.style.position = "absolute";
-        button.style.left = "50%";
-        button.style.transform = "translateX(-50%)";
-        button.textContent = "Play again";
-
-        // Append replay button to div and give it an onclick function
-        gamediv.appendChild(button);
-        button.onclick = function () {
-            reset();
-            
-            // Hide replay button
-            button.style.display = "none";
-            
-            // Restore EventListeners on images to enable player to play again
-            rockImage.addEventListener('click', playerRock);
-            paperImage.addEventListener('click', playerPaper);
-            scissorsImage.addEventListener('click', playerScissors);
-        }
     }
 
+    // Play a round of the game
     else if (playerScore != 5 || computerScore != 5) {
         
         audio.play();
         
         switch(playerChoice) {
+            
             // Determine who wins when player picks rock
             case 'rock':
                 if (computerChoice === 'scissors') {
@@ -218,6 +223,8 @@ function playRound (playerChoice, computerChoice) {
             const div4 = document.getElementById("enddiv");
             div4.style.display = "initial";
 
+            createReplayButton();
+
         }
         if (computerScore === 5) {
             enddivcontent.textContent = 'Shucks, you lost!';
@@ -225,6 +232,8 @@ function playRound (playerChoice, computerChoice) {
             
             const div4 = document.getElementById("enddiv");
             div4.style.display = "initial";
+
+            createReplayButton();
         }
 
         // Reveal the game info divs if they were previously hidden
